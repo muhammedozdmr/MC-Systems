@@ -1,5 +1,6 @@
 ﻿using McSystems.DataAccess;
 using McSystems.DataAccess.Entities;
+using McSystems.Employees;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,9 +94,9 @@ namespace McSystems.Business
         public CommandResult Update(EmployeeDto employeeDto)
         {
             var employee = MapToEntity(employeeDto);
-            _context.Employees.Update(employee);
             try
             {
+                _context.Employees.Update(employee);
                 _context.SaveChanges();
                 return CommandResult.Success("Güncelleme Başarılı");
             }
@@ -106,16 +107,21 @@ namespace McSystems.Business
             }
         }
         //Arayüzden id alıp silme işlemi yapılıcak
-        //public CommandResult Delete(EmployeeDto employee)
-        //{
-        //    return Delete(employee.Id);
-        //}
-        public CommandResult Delete(int id)
+        public CommandResult Delete(EmployeeDto employeeDto)
         {
-            var employee = new Employee() { Id = id };
+            var employee = new Employee()
+            {
+                Id = employeeDto.Id,
+                FirstName = employeeDto.FirstName,
+                LastName = employeeDto.LastName,
+                DateOfBirth = employeeDto.DateOfBirth,
+                HireDate = employeeDto.HireDate,
+                Gender = employeeDto.Gender,
+            };
             try
             {
                 _context.Employees.Remove(employee);
+                _context.SaveChanges();
                 return CommandResult.Success("Silme işlemi başarılı");
             }
             catch (Exception ex)

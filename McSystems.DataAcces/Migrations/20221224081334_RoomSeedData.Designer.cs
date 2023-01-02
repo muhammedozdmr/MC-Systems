@@ -4,6 +4,7 @@ using McSystems.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace McSystems.DataAccess.Migrations
 {
     [DbContext(typeof(McSystemsContext))]
-    partial class McSystemsContextModelSnapshot : ModelSnapshot
+    [Migration("20221224081334_RoomSeedData")]
+    partial class RoomSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,9 +119,6 @@ namespace McSystems.DataAccess.Migrations
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("EmailAddress")
                         .HasColumnType("varchar(120)");
 
@@ -199,8 +198,7 @@ namespace McSystems.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("EmployeeId")
-                        .IsRequired()
+                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EndDate")
@@ -437,21 +435,17 @@ namespace McSystems.DataAccess.Migrations
 
             modelBuilder.Entity("McSystems.DataAccess.Entities.Reservation", b =>
                 {
-                    b.HasOne("McSystems.DataAccess.Entities.Employee", "Employee")
+                    b.HasOne("McSystems.DataAccess.Entities.Employee", null)
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("McSystems.DataAccess.Entities.Room", "Room")
+                    b.HasOne("McSystems.DataAccess.Entities.Room", null)
                         .WithMany()
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("McSystems.DataAccess.Entities.Country", b =>

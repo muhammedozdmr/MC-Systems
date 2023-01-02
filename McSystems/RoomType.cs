@@ -1,4 +1,4 @@
-﻿namespace McSystems.DataAccess.Entities
+﻿namespace McSystems
 {
     public enum RoomType
     {

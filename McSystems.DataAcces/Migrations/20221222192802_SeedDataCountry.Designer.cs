@@ -4,6 +4,7 @@ using McSystems.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace McSystems.DataAccess.Migrations
 {
     [DbContext(typeof(McSystemsContext))]
-    partial class McSystemsContextModelSnapshot : ModelSnapshot
+    [Migration("20221222192802_SeedDataCountry")]
+    partial class SeedDataCountry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,9 +119,6 @@ namespace McSystems.DataAccess.Migrations
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("EmailAddress")
                         .HasColumnType("varchar(120)");
 
@@ -199,8 +198,7 @@ namespace McSystems.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("EmployeeId")
-                        .IsRequired()
+                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EndDate")
@@ -255,158 +253,6 @@ namespace McSystems.DataAccess.Migrations
                         .IsUnique();
 
                     b.ToTable("Room", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Capacity = (byte)2,
-                            Description = "2 kişilik çift yataklı oda",
-                            Floor = (byte)1,
-                            InMaintenance = false,
-                            Number = (byte)1,
-                            RoomType = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Capacity = (byte)2,
-                            Description = "2 kişilik çift yataklı oda",
-                            Floor = (byte)1,
-                            InMaintenance = false,
-                            Number = (byte)2,
-                            RoomType = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Capacity = (byte)2,
-                            Description = "2 kişilik tek yataklı oda",
-                            Floor = (byte)1,
-                            InMaintenance = false,
-                            Number = (byte)3,
-                            RoomType = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Capacity = (byte)4,
-                            Description = "2 kişilik 2 adet çift yataklı oda",
-                            Floor = (byte)2,
-                            InMaintenance = false,
-                            Number = (byte)1,
-                            RoomType = 10
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Capacity = (byte)5,
-                            Description = "deniz manzaralı 5 kişilik çift yataklı oda",
-                            Floor = (byte)2,
-                            InMaintenance = false,
-                            Number = (byte)2,
-                            RoomType = 6
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Capacity = (byte)6,
-                            Description = "çift yataklı aile odası",
-                            Floor = (byte)2,
-                            InMaintenance = false,
-                            Number = (byte)3,
-                            RoomType = 9
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Capacity = (byte)6,
-                            Description = "çift yataklı oda suite",
-                            Floor = (byte)3,
-                            InMaintenance = false,
-                            Number = (byte)1,
-                            RoomType = 12
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Capacity = (byte)4,
-                            Description = "4 kişilik çift yataklı oda",
-                            Floor = (byte)3,
-                            InMaintenance = false,
-                            Number = (byte)2,
-                            RoomType = 4
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Capacity = (byte)4,
-                            Description = "4 kişilik çift yataklı oda",
-                            Floor = (byte)3,
-                            InMaintenance = false,
-                            Number = (byte)3,
-                            RoomType = 3
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Capacity = (byte)10,
-                            Description = "10 kişilik çift yataklı oda",
-                            Floor = (byte)4,
-                            InMaintenance = false,
-                            Number = (byte)1,
-                            RoomType = 12
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Capacity = (byte)4,
-                            Description = "4 kişilik çift yataklı oda",
-                            Floor = (byte)4,
-                            InMaintenance = false,
-                            Number = (byte)2,
-                            RoomType = 7
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Capacity = (byte)8,
-                            Description = "8 kişilik çift yataklı oda",
-                            Floor = (byte)4,
-                            InMaintenance = false,
-                            Number = (byte)3,
-                            RoomType = 9
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Capacity = (byte)2,
-                            Description = "2 kişilik çift yataklı oda",
-                            Floor = (byte)5,
-                            InMaintenance = false,
-                            Number = (byte)1,
-                            RoomType = 12
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Capacity = (byte)3,
-                            Description = "3 kişilik çift yataklı juniorsuite oda",
-                            Floor = (byte)5,
-                            InMaintenance = false,
-                            Number = (byte)2,
-                            RoomType = 6
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Capacity = (byte)6,
-                            Description = "6 kişilik çift yataklı kingsuite oda",
-                            Floor = (byte)5,
-                            InMaintenance = false,
-                            Number = (byte)3,
-                            RoomType = 12
-                        });
                 });
 
             modelBuilder.Entity("CustomerReservation", b =>
@@ -437,21 +283,17 @@ namespace McSystems.DataAccess.Migrations
 
             modelBuilder.Entity("McSystems.DataAccess.Entities.Reservation", b =>
                 {
-                    b.HasOne("McSystems.DataAccess.Entities.Employee", "Employee")
+                    b.HasOne("McSystems.DataAccess.Entities.Employee", null)
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("McSystems.DataAccess.Entities.Room", "Room")
+                    b.HasOne("McSystems.DataAccess.Entities.Room", null)
                         .WithMany()
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("McSystems.DataAccess.Entities.Country", b =>

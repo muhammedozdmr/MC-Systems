@@ -34,6 +34,21 @@ namespace McSystems.DataAccess
             //.HasMaxLength(100);
             modelBuilder.Entity<Country>().ToTable("Country");
 
+            //Dene amaçlı test verileri
+            //Seed Data (Dummy Data)
+            modelBuilder.Entity<Country>().HasData(
+                new Country() { Id=1, Name="Türkiye"},
+                new Country() { Id=2, Name="Amerika"},
+                new Country() { Id=3, Name="Arjantin"},
+                new Country() { Id=4, Name="Fransa"},
+                new Country() { Id=5, Name="İtalya"},
+                new Country() { Id=6, Name="Almanya"},
+                new Country() { Id=7, Name="Rusya"},
+                new Country() { Id=8, Name="İngiltere"},
+                new Country() { Id=9, Name="İsveç"},
+                new Country() { Id=10, Name="Danimarka"}
+               );
+
             //1. Yöntem
             //Customer -> Country arasındaki FK tanımı için gerekli
             //yapılandırmayı Country tarafından bakarak yapsaydım.

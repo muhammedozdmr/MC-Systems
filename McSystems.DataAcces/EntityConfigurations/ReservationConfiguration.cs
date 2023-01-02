@@ -15,8 +15,8 @@ namespace McSystems.DataAccess.EntityConfigurations
         {
             builder.ToTable("Reservation");
             builder.HasKey(res => res.Id);
-            builder.HasOne<Room>().WithMany().HasForeignKey(res => res.RoomId);
-            builder.HasOne<Employee>().WithMany().HasForeignKey(res => res.EmployeeId);
+            builder.HasOne(res=>res.Room).WithMany().HasForeignKey(res => res.RoomId);
+            builder.HasOne(res=>res.Employee).WithMany().HasForeignKey(res => res.EmployeeId);
             builder.Property(res => res.StartDate).HasColumnType("date");
             builder.Property(res => res.EndDate).HasColumnType("date");
         }

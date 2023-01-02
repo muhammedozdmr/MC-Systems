@@ -3,30 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using McSystems;
 
-namespace McSystems.DataAccess.Entities
+namespace McSystems.Rooms
 {
-    public class Room
+    public class RoomDto
     {
         public int Id { get; set; }
         public byte Number { get; set; }
         public byte Floor { get; set; }
-        public string Name 
-        { 
+        public string Name
+        {
             get
             {
-                if(Floor < 10 && Number < 10)
+                if (Floor < 10 && Number < 10)
+                {
+                    return Floor.ToString().PadRight(3, '0') + Number.ToString();
+                }
+                else if (Floor < 10 && Number > 10)
                 {
                     return Floor.ToString().PadRight(2, '0') + Number.ToString();
                 }
-                else if(Floor < 10 && Number >= 10)
+                else if (Floor > 10 && Number < 10)
                 {
-                    return Floor.ToString().PadRight(1,'0') + Number.ToString();
-                }
-                else if(Floor >= 10 && Number < 10)
-                {
-                    return Floor.ToString().PadRight(1,'0') + Number.ToString();
+                    return Floor.ToString().PadRight(2, '0') + Number.ToString();
                 }
                 else
                 {
